@@ -1,0 +1,29 @@
+<h1>Articles</h1>
+
+<h3>Start Commenting</h3>
+
+<ul>
+  {{#each articles}}
+  	<li>
+  	   <p>Headline: {{this.headline}}</p>
+       <p>URL: {{this.url}}</p>
+       <ul>
+           {{#each this.comments}}
+            <li>
+                <p>Name: {{this.name}} </p>
+                <p>Comment: {{this.body}} </p>
+            </li>
+           {{/each}}
+       </ul>
+       <div>
+          <form action="/article/:"+{{this.id}} method="POST">
+          	<textarea type="text" name="name"></textarea>
+            <textarea type="text" name="body"></textarea>
+
+          	<button type="submit">Submit</button>
+          </form>
+        </div>
+  	</li>
+  {{/each}}
+</ul>
+
